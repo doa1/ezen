@@ -1,0 +1,356 @@
+<!--// Cards Header & Footer -->
+<div class="outer-w3-agile mt-3">
+    <div class="card text-center">
+        <div class="card-header" style="background:#c1c5cad7">
+          <h4 class="card-title">
+            <a class="btn btn-default btn-sm m-3" title="Back to the properties list" (click)="propService.goToPropertyList()">
+            <i class="fa fa-hand-o-left" style="color: #1da1f2;font-size: large"></i>
+          </a>{{propertName}} Property Details </h4>
+        </div>
+        <div class="card-body">
+            <div class="custom-tab">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a style="color:blue;font-size: 1.2em;" class="nav-item nav-link active" id="custom-nav-home-tab" data-toggle="tab" href="#custom-nav-home" role="tab" aria-controls="custom-nav-home" aria-selected="true">General Information</a>
+                        <a style="color:blue;font-size: 1.2em;" class="nav-item nav-link" id="custom-nav-contact-tab" data-toggle="tab" href="#custom-nav-contact" role="tab" aria-controls="custom-nav-contact" aria-selected="false">Banking Details</a>
+                        <a style="color:blue;font-size: 1.2em;" class="nav-item nav-link" id="custom-nav-pay-tab" data-toggle="tab" href="#custom-nav-pay" role="tab" aria-controls="custom-nav-contact" aria-selected="false">Get Pay Advice Statements</a>
+                    </div>
+                </nav>
+                <div class="tab-content pl-3 pt-2" id="nav-tabContent" *ngFor="let item of propertyDetail">
+                    <div class="tab-pane fade show active" id="custom-nav-home" role="tabpanel" aria-labelledby="custom-nav-home-tab">
+                        <br><br>
+                        <h3 class="text-capitalize text-primary"> <strong>General Property Details</strong></h3>
+                        <div class="table table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>LR Number</th>
+                                        <th>Property Code</th>
+                                        <th>Management Fees</th>
+                                        <th>Category</th>
+                                        <th>Building Type</th>
+                                        <th>Floors</th>
+                                        <th>Vacant</th>
+                                        <th>Occupied</th>
+                                        <th>All Units</th>
+                                        <th>Unit Cost</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{item.lrNumber}}</td>
+                                        <td>{{item.code}}</td>
+                                        <td><span *ngIf="isUndefinedOrNull(item.manFeesValue)" class="fa fa-close"></span>{{item.manFeesValue}}</td>
+                                        <td>{{item.category}}</td>
+                                        <td>{{item.buildngTp}}</td>
+                                        <td>{{item.flrs}}</td>
+                                        <td>{{item.vacUnits}}</td>
+                                        <td>{{item.occUnits}}</td>
+                                        <td> {{totalUnits}}</td>
+                                        <td><span *ngIf="isUndefinedOrNull(item.costPerUnit)" class="fa fa-close"></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                      <h5 class="text-capitalize text-primary"> <strong>Location Address Information</strong></h5>
+                          <p> <strong>{{item.address.location}}</strong></p>
+
+                    </div>
+
+                    <div class="tab-pane fade" id="custom-nav-contact" role="tabpanel" aria-labelledby="custom-nav-contact-tab">
+                        <br><br>
+                        <h2 class="text-capitalize text-primary"> <strong>Financial Details</strong></h2>
+
+                        <p class="text-muted m-b-15">Below are the details of the property banking, <span class="fa fa-close"></span> is for unset value:</p>
+                        <br>
+                        <div class="table table-responsive">
+                            <table class="table table-stripped" id="main_tables">
+                                <thead>
+                                    <tr>
+                                        <th>Total Cost</th>
+                                        <th>Commission Type</th>
+                                        <th>Commission Mode</th>
+                                        <th>Commission</th>
+                                        <th>Sale Mode</th>
+                                        <th>CashBook</th>
+                                        <th>Water Acc/No</th>
+                                        <th>Water Meter</th>
+                                        <th>Electricity Acc/No</th>
+                                        <th>Electricity Meter</th>
+                                        <th>Bank</th>
+                                        <th>Bank Account Name</th>
+                                        <th>Bank Account No</th>
+                                        <th>Bank Name</th>
+                                        <th>Account Balance</th>
+                                        <th>Account Mode Level</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td> <span *ngIf="isUndefinedOrNull(item.totalCost)" class="fa fa-close"></span> {{item.totalCost}}</td>
+                                        <td><span *ngIf="isUndefinedOrNull(item.commissionType)" class="fa fa-close"></span> {{item.comissionType}}</td>
+                                        <td> <span *ngIf="isUndefinedOrNull(item.commMode)" class="fa fa-close"></span> {{item.commMode}}</td>
+                                        <td><span *ngIf="isUndefinedOrNull(item.commission)" class="fa fa-close"></span> {{item.commision}}</td>
+                                        <td><span *ngIf="isUndefinedOrNull(item.sellingMethod)" class="fa fa-close"></span> {{item.sellingMethod}}</td>
+                                        <td><span *ngIf="isUndefinedOrNull(item.specifiedCashbook)" class="fa fa-close"></span> {{item.specifiedCashbook}}</td>
+                                        <td><span *ngIf="isUndefinedOrNull(item.waterAccountNumber)" class="fa fa-close"></span> {{item.waterAccountNumber}}</td>
+                                        <td><span *ngIf="isUndefinedOrNull(item.waterMeterNumber)" class="fa fa-close"></span> {{item.waterMeterNumber}}</td>
+                                        <td><span *ngIf="isUndefinedOrNull(item.elecAccountNumber)" class="fa fa-close"></span> {{item.elecAccountNumber}}
+                                        </td>
+                                        <td><span *ngIf="isUndefinedOrNull(item.elecMeterNumber)" class="fa fa-close"></span> {{item.elecMeterNumber}}</td>
+                                        <td><span *ngIf="isUndefinedOrNull(item.bank)" class="fa fa-close"></span> {{item.bank}}
+                                        </td>
+                                        <td> <span *ngIf="isUndefinedOrNull(item.bankAccountName)" class="fa fa-close"></span> {{item.bankAccountName}}</td>
+                                        <td><span *ngIf="isUndefinedOrNull(item.bankAccountNo)" class="fa fa-close"></span> {{item.bankAccountNo}}
+                                        </td>
+                                        <td><span *ngIf="isUndefinedOrNull(item.bankName)" class="fa fa-close"></span> {{item.bankName}}</td>
+                                        <td><span *ngIf="isUndefinedOrNull(item.accountBal)" class="fa fa-close"></span> {{item.accountBal}}</td>
+                                        <td> <span *ngIf="isUndefinedOrNull(item.accountModeLevel)" class="fa fa-close"></span> {{item.accountModeLevel}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--payadvice reports-->
+                    <div class="tab-pane fade" id="custom-nav-pay" role="tabpanel" aria-labelledby="custom-nav-profile-tab">
+                        <br><br>
+                        <h4 class="text-capitalize text-primary"> <strong>Get Pay Advice Reports For this Property</strong></h4>
+                        <mat-accordion>
+                            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Payment Advice Option
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        Please Select your payment type Here
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <mat-form-field>
+                                    <mat-select placeholder="Payment Type">
+                                        <mat-option *ngFor="let pay of paymentTypes" [value]="pay">
+                                            <p class="btn btn-block btn-success btn-sm" data-toggle="modal" (click)="getPayAdvice(pay)" data-target="#clickedPayment">{{pay}} Advice</p>
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-footer text-white">
+            <p style="color:black">Updated on {{today| date: 'medium'}}</p>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="clickedPayment" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="myLargeModalLabel">
+                    <h5><strong>{{clickedPayment}} Payments</strong> for {{propertName}} !</h5>
+                    <h5 *ngFor="let date of effectiveDates">Effective from <em>{{date.from| date:'dd-MM-yyy'}}</em> to <em>{{date.to| date: 'dd-MM-yyy'}}</em></h5>
+                    <h5>Statement Type: <em>{{statementType}}</em></h5>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid" style="background-color:#F1FBFA">
+                    <div class="row">
+                        <div class="col-md-12" *ngIf="perUnitDetails.length > 0 ">
+
+                            <div class="container" id="invoice" data-attr="clickedPayment">
+
+                                <div class="container">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            Invoice
+                                            <strong>{{today| date: 'dd/mm/yyy'}}</strong>
+                                            <span class="float-right"> <strong>Status:</strong> Approved</span>
+
+                                        </div>
+                                        <div class="card-body">
+
+                                            <h5 class="text-center text-dark"><strong>PROPERTY ACCOUNT STATEMENT</strong></h5>
+
+                                            <div class="row mb-5">
+                                                <div class="col-sm-6 text-dark">
+                                                    <div><strong>PROPERTY</strong> <span class="pull-right">{{propertyCode}}</span></div>
+                                                    <div><strong> L.R No/Estate</strong> <span class="pull-right">{{lrNumber}}</span></div>
+                                                    <div><strong>PAYMENT PERIOD </strong><span class="pull-right">{{today|date: 'MMMM-y'}}</span></div>
+
+                                                </div>
+                                                <div class="col-sm-6 pull-right">
+                                                    <div><strong>PRINCIPLE</strong> <span class="pull-right">{{propertyCode.substring(0,propertyCode.length-1)}}
+                                                      <br>{{auth.getLogDetails().username}}</span></div>
+                                                    <div class="clearfix"></div>
+                                                    <div><strong>DUE DATE</strong> <span class="pull-right"> {{lastDayOfMonth| date: 'dd-M-yyy'}}</span></div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="table-responsive">
+                                                <table class="table table-striped table-borderless">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="center">Unit No#</th>
+                                                            <th>Description</th>
+
+                                                            <th class="right">Rent</th>
+                                                            <th>Invoiced</th>
+                                                            <th class="center">Bal B/f</th>
+                                                            <th class="right">Amount Paid</th>
+                                                            <th>Bal C/f</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let unit of perUnitDetails">
+                                                            <td>{{unit.unitNo}}</td>
+                                                            <td>{{unit.description}}</td>
+                                                            <td>{{unit.charges}}</td>
+                                                            <td>{{unit.invoice}}</td>
+                                                            <td>{{unit.bal_bf}}</td>
+                                                            <td>{{unit.amountPaid}}</td>
+                                                            <td>{{unit.bal_cf}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><strong>Total</strong></td>
+                                                            <td>{{totalRent}}</td>
+                                                            <td>{{totalInvoce}}</td>
+                                                            <td>{{totalBf}}</td>
+                                                            <td>{{totalAmtPaid}}</td>
+                                                            <td>{{totalBalCf}}</td>
+                                                        </tr>
+                                                        <tr *ngIf="totalExpense > 0">
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>{{totalExpense}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <hr>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-5 col-sm-5 ml-auto">
+                                                    <table class="table-hover table-responsive">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="left">
+                                                                    RENT Received
+                                                                </td>
+                                                                <td class="right">{{rentReceived + '.00'}}</td>
+                                                            </tr>
+                                                            <tr *ngFor="let fee of mngmentFees">
+                                                                <td class="left">
+                                                                    Less Management Fees (0%) </td>
+                                                                <td class="right">{{fee.fees + '.00'}}</td>
+                                                            </tr>
+                                                            <tr *ngFor="let fee of mngmentFees">
+                                                                <td class="left">
+                                                                    VAT (16%)
+                                                                </td>
+                                                              <td class="right">{{fee.vat + '.00' }}</td>
+
+                                                            </tr>
+
+                                                            <tr style="border-top: 1px solid slategray">
+
+                                                                <td class="left">
+                                                                    <strong>Total Amount Due</strong>
+                                                                </td>
+                                                                <td class="right">
+                                                                    <strong>{{amtDue + '.00'}}</strong>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td class="left">
+                                                                Less Advances
+                                                              </td>
+                                                              <td class="right">0.00</td>                                                                                                                          </tr>
+                                                            <tr>
+                                                              <td class="left">
+                                                                Less Other Transactions
+                                                              </td>
+                                                              <td class="right">0.00</td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td class="left">
+                                                                Add Other Transactions
+                                                              </td>
+                                                              <td class="right">0.00</td>
+                                                            </tr>
+                                                            <tr style="border-top: 1px solid slategray">
+
+                                                              <td class="left">
+                                                                BALANCE B/F
+                                                              </td>
+                                                              <td class="right">
+                                                                <strong>{{balanceBf + '.00'}}</strong>
+                                                              </td>
+                                                            </tr>
+                                                            <tr style="border-top: 1px solid slategray">
+
+                                                              <td class="left">
+                                                                <strong>NET  AMOUNT  DUE</strong>
+                                                              </td>
+                                                              <td class="right">
+                                                                <strong>{{netAmtDue + '.00'}}</strong>
+                                                              </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card-deck ml-2">
+                                    <div class="card border-light mb-3">
+                                        <div class="card-header text-info">Management fees Calculation</div>
+                                        <div class="card-body">
+                                            <div class="card-text" *ngFor="let fee of mngmentFees">
+                                                <p>Management Fee Rates: {{fee.rates}}</p>
+                                                <p>Management Fees: <strong>{{fee.fees}}</strong></p>
+                                                <p>Management Fees VAT: <strong>{{fee.vat}}</strong></p>
+                                                <p>Management Total Fees: <strong>{{fee.total}}</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card border-light mb-3">
+                                        <div class="card-header text-info">Other Information</div>
+                                        <div class="card-body">
+                                            <h5 class="card-text text-black-50">Balance B/f : <strong>{{balanceBf}}</strong></h5>
+
+                                            <h5 class="card-text text-black-50">Deferred Amount: <strong>{{defferedAmt}}</strong></h5>
+
+                                            <h5 class="card-text text-black-50">Amount Due: <strong> {{amtDue}}</strong></h5>
+                                            <h5 class="card-text text-black-50">Period Income: <strong> {{periodIncome}}</strong></h5>
+                                            <h5 class="card-text text-black-50">Period Deductions: <strong> {{periodDeductions}}</strong></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" (click)="downloadInvoiceAdvice()" data-dismiss="modal">Save This</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

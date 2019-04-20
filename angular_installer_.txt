@@ -1,0 +1,36 @@
+HOSTING ANGULAR 4 PROJECT ON APACHE2 SERVER
+
+1. Create the production build of the project via angular-cli as:
+	ng build --prod
+2. Copy the contents of the dist/ dir content to apache directory where you wish to serve your files.
+3. By default apache2 wont know the linking/routing of the angular project and will often render 404 page instead. For this reason write the .htaccess file in the route directory of the project. ie where the index.html resides.
+
+.htaccess file content
+	<IfModule mod_rewrite.c>
+		RewriteEngine On
+		RewriteBase /
+		RewriteRule ^index\.html$ -[L]
+		RewriteCond %{REQUEST_FILENAME} !-f
+		RewriteCond %{REQUEST_FILENAME} !-d
+		RewriteRule . index.html [L]
+	<IfModule>
+
+The above piece of code makes use of the mod_rewrite module from the apache,
+therefore makes sure this is enabled by issuing the following command:
+	sudo a2enmode rewrite
+	
+	Restart apache service as:
+	sudo systemctl restart apache2
+
+
+Also for the rewrite module to work, the apache configuration should have AllowOverride all enabled for the directory where the Angular2 app is served. In the default case this can be done as follows:
+
+Open the file /etc/apache2/sites-enabled/000-default-sites.conf
+ Then add the following piece of code inside the VirtualHost block (assuming the Angular2 app is served from /var/www/html)
+ 
+ <Directory "/var/www/html">
+ 	AllowOverride All
+ 	
+ </Directory>
+ 
+

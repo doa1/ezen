@@ -1,0 +1,84 @@
+<div class="outer-w3-agile mt-3">
+            <h4 class="tittle-w3-agileits mb-4" style="text-decoration: underline" [hidden]="!userHasData">All Your Properties</h4>
+            <div class="col-xs-9 mb-3" [hidden]="!userHasData">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <strong>Export Data :</strong>
+                    </button>
+                    <div class="dropdown-menu">
+                        <p class="dropdown-item" class="btn btn-default btn-block btn-sm" (click)="exportAsXL()"> <i class="fa fa-file-excel-o" style="font-size:18px;color:#00ff0d" title="Excel Download"> </i> As Excel
+                        </p>
+                        <div class="dropdown-divider"></div>
+                        <p class="dropdown-item" class="btn btn-default btn-block btn-sm" (click)="downloadPdf()"> <i class="fa fa-file-pdf-o" style="font-size:18px;color:brown" title="Pdf Download"> </i> As  PDF
+                        </p>
+                    </div>
+
+                </div>
+
+                <hr style="margin:10px">
+            </div>
+
+        <div class="table-responsive" [hidden]="!userHasData">
+
+            <table data-vertable="ver3" datatable class="table table-striped table-hover" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+                <thead>
+                    <tr >
+                        <th scope="col">Property Name</th>
+                        <th scope="col">Lr Number</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Region</th>
+                        <th scope="col">Building Type</th>
+                        <th scope="col">Code</th>
+                        <th scope="col">Total Units</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  *ngFor="let prop of myprops">
+                        <th scope="row">{{prop.name}}</th>
+                        <td >{{prop.lrNumber}}</td>
+                        <td >{{prop.category}}</td>
+                        <td >{{prop.regionName}}</td>
+                        <td >{{prop.buildngTp}}</td>
+                        <td >{{prop.code}}</td>
+                        <td >{{prop.vacUnits*1 + prop.occUnits*1}}</td>
+                        <td >
+                            <div class="panel-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title" style="color: #f1eded">
+                                            <a data-toggle="collapse" aria-expanded="true" class="btn btn-block btn-default btn-sm" href="#{{prop.code}}" style="font-size:0.8em"> View ?</a>
+                                        </h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div id="{{prop.code}}" class="panel-collapse collapse">
+                                            <ul class="list-group"><br>
+                                                <li class="list-group-item"><a title="View details" [routerLink]="['/details',prop.id]" class="btn btn-block btn-default btn-sm" style="padding:5px 2px">Details</a>
+                                                </li>
+                                                <li class="list-group-item"> <a title="View the units" [routerLink]="['/units',prop.id]" class="btn btn-block btn-default btn-sm" style="padding:5px 2px">Units</a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <a [routerLink]="['/leases',prop.id]" title="View the leases" class="btn btn-block btn-default btn-sm" style="padding:5px 2px">Leases</a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <a [routerLink]="['/paid_statements',prop.id]" title="view statements" class="btn btn-block btn-default btn-sm" style="padding:5px 2px">Paid Statements</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    <!--What to do in case landlord has no property currently-->
+    <div class="row" [hidden]="userHasData">
+      <div class="col-sm-10 ml-2">
+        <h2 class="text-capitalize text-center ml-5 text-danger">Ooops!!</h2>
+        <h4 class="text-center text-capitalize text-black-50"> Looks like You currently don't have any property listed !!!</h4>
+      </div>
+
+    </div>
+</div>

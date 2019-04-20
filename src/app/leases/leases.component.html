@@ -1,0 +1,148 @@
+<div class="outer-w3-agile mt-3">
+  <h4 class="tittle-w3-agileits mb-4">
+    <small class="btn btn-info btn-sm mb-2 ml-3" title="Back to Properties List" (click)="propertyS.goToPropertyList()">
+      <i class="fa fa-hand-o-left"></i>
+    </small>
+    {{propertyName}} Available Leases</h4>
+  <h3 *ngIf="leases.length < 1" class="text-center text-capitalize  text-warning">Unfortunately <strong>{{propertyName}}</strong> has no leases!!</h3>
+    <div class="table-responsive" [hidden]="!isDataAvailable">
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" width="100%" class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Tenant Name</th>
+                    <th scope="col">Unit No# </th>
+                    <th scope="col">Town</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Account Number</th>
+
+                    <th scope="col">Rent </th>
+                    <th scope="col">Payment Frequency</th>
+                    <th scope="col">Lease Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let lease of leases">
+                    <td><button class="btn btn-block btn-default btn-sm" data-toggle="modal" data-target="#myDataModal" (click)="getLeaseClick(lease)">{{lease.lastName}} {{lease.surname}}</button> </td>
+                    <td>{{lease.unitNo}}</td>
+                    <td>{{lease.town}}</td>
+                    <td>
+                        <p *ngIf="propertyS.isUndefinedOrNull(lease.fixedPhone)"><i class="fa fa-close m-3" style="color: #c82333"></i></p>
+                        {{lease.fixedPhone}}
+                    </td>
+                    <td><i class="fa fa-close" *ngIf="propertyS.isUndefinedOrNull(lease.accountNo)"></i> {{lease.accountNo}}</td>
+                    <td>{{lease.rentAmount}}</td>
+                    <td> {{lease.paymentFreq}} </td>
+                    <td>{{lease.leaseType}} </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="myDataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-black-50" id="exampleModalLongTitle"> <strong>{{tenantNames}}</strong> lease Details !</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-12 bg-grid" *ngFor="let lease of leaseDetails">
+                                All details of the lease
+                                <div class="row">
+                                    <div class="col-8 col-sm-6 bg-grid">
+                                        <strong>Unit Number:</strong>
+                                    </div>
+                                    <div class="col-4 col-sm-6 bg-grid">
+                                        {{lease.unitNo}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8 col-sm-6 bg-grid">
+                                        <strong> Lease Type: </strong>
+                                    </div>
+                                    <div class="col-4 col-sm-6 bg-grid">
+                                        {{lease.leaseType}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8 col-sm-6 bg-grid">
+                                        <strong> Rent Period Variation</strong>
+                                    </div>
+                                    <div class="col-4 col-sm-6 bg-grid">
+                                        {{lease.rentPeriodVariation}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8 col-sm-6 bg-grid">
+                                        <strong> Lease Start Date:</strong>
+                                    </div>
+                                    <div class="col-4 col-sm-6 bg-grid">
+                                        {{leaseStartDate}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8 col-sm-6 bg-grid">
+                                        <strong> Days to Expiry of the lease</strong>
+                                    </div>
+                                    <div class="col-4 col-sm-6 bg-grid">
+                                        {{lease.daysToExpire}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8 col-sm-6 bg-grid">
+                                        <strong> Rent Amount:</strong>
+                                    </div>
+                                    <div class="col-4 col-sm-6 bg-grid">
+                                        {{lease.rentAmount}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8 col-sm-6 bg-grid">
+                                        <strong> Payment Frequency</strong>
+                                    </div>
+                                    <div class="col-4 col-sm-6 bg-grid">
+                                        {{lease.paymentFreq}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8 col-sm-6 bg-grid">
+                                        <strong> Account Number:</strong>
+                                    </div>
+                                    <div class="col-4 col-sm-6 bg-grid">
+                                        {{lease.accountNo}}
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-8 col-sm-6 bg-grid">
+                                        <strong> Account Balance</strong>
+                                    </div>
+                                    <div class="col-4 col-sm-6 bg-grid">
+                                        {{lease.accountBal}}
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-8 col-sm-6 bg-grid">
+                                        <strong> Is Receipt Blocked?</strong>
+                                    </div>
+                                    <div class="col-4 col-sm-6 bg-grid">
+                                        {{lease.rcptBlocked}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

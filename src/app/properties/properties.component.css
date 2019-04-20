@@ -1,0 +1,139 @@
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+@font-face {
+    font-family: Montserrat-Regular;
+    src: url('/src/assets/fonts/montserrat/Montserrat-Regular.ttf');
+}
+
+@font-face {
+    font-family: Montserrat-Medium;
+    src: url('/src/assets/fonts/montserrat/Montserrat-Medium.ttf');
+}
+
+
+/*//////////////////////////////////////////////////////////////////
+[ RESTYLE TAG ]*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+/*//////////////////////////////////////////////////////////////////
+[ Table ]*/
+
+.limiter {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.container-table100 {
+    width: 100%;
+    min-height: 100vh;
+    background: #d1d1d1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 33px 30px;
+}
+
+.wrap-table100 {
+    width: 1300px;
+}
+
+
+/*//////////////////////////////////////////////////////////////////
+[ Table ]*/
+
+table {
+    width: 100%;
+    background-color: #fff;
+}
+
+th,
+td {
+    font-weight: unset;
+    padding-right: 10px;
+}
+
+.column100 {
+    width: 130px;
+    padding-left: 25px;
+}
+
+.column100.column1 {
+    width: 265px;
+    padding-left: 42px;
+}
+
+.row100.head th {
+    padding-top: 24px;
+    padding-bottom: 20px;
+}
+
+.row100 td {
+    padding-top: 18px;
+    padding-bottom: 14px;
+}
+
+
+/*==================================================================
+[ Ver3 ]*/
+
+.table100.ver3 tbody tr {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.table100.ver3 td {
+    font-family: Montserrat-Regular;
+    font-size: 14px;
+    color: #808080;
+    line-height: 1.4;
+}
+
+.table100.ver3 th {
+    font-family: Montserrat-Medium;
+    font-size: 12px;
+    color: rgb(22, 1, 1);
+    line-height: 1.4;
+    text-transform: uppercase;
+    background-color: #f1eded;
+}
+
+.sorting {
+    color: #484848;
+}
+
+.table100.ver3 .row100:hover td {
+    background-color: #fcebf5;
+}
+
+.table100.ver3 .hov-column-ver3 {
+    background-color: #fcebf5;
+}
+
+.table100.ver3 .hov-column-head-ver3 {
+    background-color: #777988 !important;
+}
+
+.table100.ver3 .row100 td:hover {
+    background-color: #c5ccd3d7;
+    color: rgb(29, 26, 26);
+}
+
+.panel-group {
+    background-color: rgba(231, 223, 223, 0.979);
+}
+
+.panel-title a:hover {
+    color: rgb(21, 24, 218);
+    text-transform: uppercase;
+}

@@ -1,0 +1,42 @@
+{
+    "count": 2,
+    "list": [{
+            "id": 2636,
+            "code": "00004",
+            "name": "2434",
+            "lrNumber": "32ERQW",
+            "rentSale": "MANAGE",
+            "address": {
+                "road": "KIMATHI",
+                "town": "NAIROBI",
+                "country": "KENYA",
+                "location": "KIMATHI, NAIROBI, KENYA"
+            },
+            "category": "RESIDENTIAL",
+            "flrs": 0,
+            "buildngTp": "MULTI_UNIT",
+            "accountModeLevel": "CONSOLIDATED_PROPERTY"
+        },
+        {
+            "id": 2323,
+            "code": "00001",
+            "name": "DSFDASF",
+            "lrNumber": "FDSAFASDF",
+            "rentSale": "MANAGE",
+            "address": {
+                "road": "REWQREQWREW",
+                "town": "REWRQWER",
+                "country": "AFGHANISTAN",
+                "location": "REWQREQWREW, REWRQWER, AFGHANISTAN"
+            },
+            "category": "COMMERCIAL",
+            "flrs": 0,
+            "buildngTp": "MULTI_UNIT",
+            "unitOfMeasure": "SQR_FT",
+            "costPerUnit": 200,
+            "specifiedUnits": 2000,
+            "totalCost": 400000,
+            "accountModeLevel": "CONSOLIDATED_PROPERTY"
+        }
+    ]
+}

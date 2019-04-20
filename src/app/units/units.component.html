@@ -1,0 +1,153 @@
+<div class="outer-w3-agile mt-3">
+      <h4 class="tittle-w3-agileits mb-4">
+        <small class="btn btn-info btn-sm ml-3" title="Back to Properties List" (click)="propService.goToPropertyList()">
+        <i class="fa fa-hand-o-left"></i>
+      </small>
+        <span style="text-decoration: underline; margin-left: 10px">'{{propertyName}}' Available Units</span></h4>
+  <h3 [hidden]="userHasUnits" class="text-center text-danger text-capitalize"> Unfortunately this property has no units yet!!</h3>
+  <div class="table-responsive" [hidden]="!userHasUnits">
+      <table datatable [dtOptions]="dataTableOptions" [dtTrigger]="dtTriger" class="table table-striped table-hover">
+        <thead>
+        <tr>
+          <th scope="col">Unit No#</th>
+          <th scope="col">Area</th>
+          <th scope="col">Tenant Details</th>
+          <th scope="col">Payment Frequency</th>
+          <th scope="col">Rent</th>
+          <th scope="col">Unit Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let data of propUnits.list">
+          <th scope="row"> <a style="background-color:#cac2c2;color:blue" class="btn btn-block btn-default  btn-sm" data-toggle="modal" data-target="#exampleModalLong_grids" (click)="getUnitDetails(data)">{{data.unitNo}}</a></th>
+          <td>{{data.area}}</td>
+          <td><i *ngIf="!data.tenant">No Tenant</i>{{data.tenant}}</td>
+          <td>{{data.paymentFreq}}</td>
+          <td>{{data.amount}}</td>
+          <td>{{data.status}}</td>
+        </tr>
+
+        </tbody>
+  </table>
+  </div>
+</div>
+<div class="modal fade" id="exampleModalLong_grids" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black-50" id="exampleModalLongTitle">Additional Details for unit <strong>{{unitNo}}</strong> !</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12 bg-grid" *ngFor="let unit of unitDetails">
+                            Info:
+                            <div class="row">
+                                <div class="col-8 col-sm-6 bg-grid">
+                                    <strong> Unit Area(sq. km): </strong>
+                                </div>
+                                <div class="col-4 col-sm-6 bg-grid">
+                                    {{unit.area}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6 bg-grid">
+                                    <strong> Unit Space Price: </strong>
+                                </div>
+                                <div class="col-4 col-sm-6 bg-grid">
+                                    {{unit.amount}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6 bg-grid">
+                                    <strong> Payment Frequency: </strong>
+                                </div>
+                                <div class="col-4 col-sm-6 bg-grid">
+                                    {{unit.paymentFreq}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6 bg-grid">
+                                    <strong> Audit Description </strong>
+                                </div>
+                                <div class="col-4 col-sm-6 bg-grid">
+                                    {{unit.auditDescription}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6 bg-grid">
+                                    <strong> Occupancy Status</strong>
+                                </div>
+                                <div class="col-4 col-sm-6 bg-grid">
+                                    {{unit.status}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6 bg-grid">
+                                    <strong> Is Furnished?</strong>
+                                </div>
+                                <div class="col-4 col-sm-6 bg-grid">
+                                    {{unit.furnished}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6 bg-grid">
+                                    <strong> Car Space: </strong>
+                                </div>
+                                <div class="col-4 col-sm-6 bg-grid">
+                                    {{unit.carSpace}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6 bg-grid">
+                                    <strong> Number of Kitchens: </strong>
+                                </div>
+                                <div class="col-4 col-sm-6 bg-grid">
+                                    {{unit.kitchens}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6 bg-grid">
+                                    <strong> No of Bedrooms</strong>
+                                </div>
+                                <div class="col-4 col-sm-6 bg-grid">
+                                    {{unit.bedrooms}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6 bg-grid">
+                                    <strong>  No of Living Rooms: </strong>
+                                </div>
+                                <div class="col-4 col-sm-6 bg-grid">
+                                    {{unit.livingRooms}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6 bg-grid">
+                                    <strong> No of Dining Rooms </strong>
+                                </div>
+                                <div class="col-4 col-sm-6 bg-grid">
+                                    {{unit.diningRooms}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6 bg-grid">
+                                    <strong> No of Bathrooms: </strong>
+                                </div>
+                                <div class="col-4 col-sm-6 bg-grid">
+                                    {{unit.bathrooms}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

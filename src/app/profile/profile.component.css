@@ -1,0 +1,11 @@
+ul li a{
+  color: #0e0e0e;
+}
+ul li a:hover{
+  cursor: pointer;
+}
+@media (min-width: 900px) {
+  img{
+    margin-top: -15%;
+  }
+}

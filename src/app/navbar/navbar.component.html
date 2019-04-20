@@ -1,0 +1,64 @@
+<!-- Sidebar Holder -->
+<nav id="sidebar">
+    <div class="sidebar-header">
+        <h2 style="text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;">
+            <a style="color:aliceblue" [routerLink]="['/home']"><img class="img img-thumbnail" src="../assets/images/logo.png"></a>
+        </h2>
+        <span>E</span>
+    </div>
+    <!--div class="profile-bg"></div-->
+    <ul class="list-unstyled components">
+        <li class="active text-dark">
+            <a [routerLink]="['/home']">
+                <i class="fas fa-th-large"></i> Dashboard
+            </a>
+        </li>
+        <li>
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+                <i class="fa fa-home"></i> Properties
+                <i class="fas fa-angle-down fa-pull-right"></i>
+            </a>
+            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a [routerLink]="['/properties']">Properties List</a>
+                </li>
+                <li>
+
+            </ul>
+            </li>
+            <li>
+                <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false">
+                    <i class="fa fa-print"></i> Payments
+                    <i class="fas fa-angle-down fa-pull-right"></i>
+                </a>
+                <ul class="collapse list-unstyled" id="pageSubmenu1">
+                    <li>
+                        <a href="">Payments</a>
+                    </li>
+                    <li>
+                        <a href="">Paid Statements</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false">
+                    <i class="fas fa-bar-chart-o"></i> Rental Statics
+                    <i class="fas fa-angle-down fa-pull-right"></i>
+                </a>
+                <ul class="collapse list-unstyled" id="pageSubmenu3">
+                    <li>
+                        <a href="">Incomes</a>
+                    </li>
+                    <li>
+                        <a href="">Expenditures/Deductions</a>
+                    </li>
+                    <li>
+                        <a href="">
+                          Rental Collections
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+    </ul>
+</nav>

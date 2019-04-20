@@ -1,0 +1,47 @@
+<!-- top-bar -->
+<nav class="navbar navbar-default mb-xl-5 mb-4">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" id="sidebarCollapse" class="btn btn-default navbar-btn">
+                  <i class="fas fa-bars"></i>
+              </button>
+        </div>
+        <!-- Search-from -->
+        <form novalidate class="form-inline mx-auto search-form">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" required="">
+            <button class="btn  btn-default my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <!--// Search-from -->
+        <ul class="top-icons-agileits-w3layouts float-right">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="far fa-user"></i>
+                </a>
+                <div class="dropdown-menu top-grid-scroll drop-3" style="margin-left: -10em">
+                    <div class="profile d-flex mr-o">
+                        <div class="profile-l align-self-center">
+                            <img src="../assets/images/profile.jpg" class="img-fluid mb-3" alt="Responsive image">
+                        </div>
+                        <div class="profile-r align-self-center">
+                            <h3 class="sub-title-w3-agileits">{{auth.getLogDetails().username}}</h3>
+                            <a href="mailto:info@example.com">{{auth.getLogDetails().email}}</a>
+                        </div>
+                    </div>
+                    <a href="#" [routerLink]="['/profile']" class="dropdown-item mt-3">
+                        <h4>
+                            <i class="far fa-user mr-3"></i>My Profile</h4>
+                    </a>
+                    <a href="#" class="dropdown-item mt-3">
+                        <h4>
+                            <i class="far fa-envelope mr-3"></i>Messages</h4>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a style="background:rgb(218, 212, 183)" class="dropdown-item btn btn-block btn-default btn-sm" (click)="logoutUser()">
+                        <span class="glyphicon glyphicon-log-out"></span> Logout?</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!--// top-bar -->

@@ -1,0 +1,156 @@
+<!-- Profile -->
+<div class="row">
+  <div class="col-sm-10">
+    <div class="outer-w3-agile col-xl mx-xl-3 p-xl-0 px-md-5">
+      <div class="header" id="prof">
+        <div class="text" >
+          <img src="../assets/images/no-image-icon-33.png" class="img-responsive rounded-circle" width="100px" style="height: 10%" alt="Responsive image">
+          <h2>{{authS.getLogDetails().username}}</h2>
+          <a href="mailto:info@example.com">
+            <p>{{authS.getLogDetails().email}}</p>
+          </a>
+        </div>
+      </div>
+      <div class="container-flud">
+        <div class="followers row">
+          <div class="f-left col">
+            <a>
+              <i class="far fa-comments"></i>
+            </a>
+          </div>
+          <div class="f-left col border-left border-right">
+            <a>
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+          <div class="f-left col">
+            <a >
+              <i class="far fa-heart"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <ul class="prof-widgt-content">
+        <li class="menu">
+          <ul>
+            <li class="button">
+              <a href="#">
+                <i class="fas fa-envelope"></i> Messages
+                <span>13</span>
+              </a>
+            </li>
+            <li class="dropdown">
+              <ul class="icon-navigation">
+                <li>
+                  <a href="#">Inbox
+                    <span class="float-right">[09]</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">Outbox
+                    <span class="float-right">[01]</span>
+                  </a>
+                </li>
+                <li>
+                  <a>Sent messages
+                    <span class="float-right">[03]</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="menu">
+          <ul>
+            <li class="button">
+              <a href="">
+                <i class="fas fa-user"></i> Profile</a>
+            </li>
+            <li class="dropdown">
+              <ul class="icon-navigation">
+                <li>
+                  <a href="#">Change your pic</a>
+                </li>
+                <li>
+                  <a href="" data-toggle="modal" data-target="#modalEditName">Update your username</a>
+                </li>
+                <li>
+                  <a href="" data-toggle="modal" data-target="#modalEditPassword">Change your Password</a>
+                </li>
+                <li>
+                  <a href="#">Edit Contact </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <!--// Profile -->
+  </div>
+</div>
+
+<div class="modal fade" id="modalEditName" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Edit Your Username Here!</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="form-group mb-5">
+          <i class="fa fa-envelope prefix grey-text"></i>
+          <input type="email" id="defaultForm-email" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+        </div>
+
+        <div class="form-group mb-4">
+          <i class="fa fa-user prefix grey-text"></i>
+          <input type="text" id="defaultForm-username" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="defaultForm-username">Your Username</label>
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button class="btn btn-default">Save?</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalEditPassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Change Your Password Here!</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="form-group mb-5">
+          <i class="fa fa-lock prefix grey-text"></i>
+          <input type="password" id="originalPass" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="originalPass">Original Password</label>
+        </div>
+
+        <div class="form-group mb-4">
+          <i class="fa fa-lock prefix grey-text"></i>
+          <input type="password" id="newpass" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="newpass">Your new password</label>
+        </div>
+        <div class="form-group mb-4">
+          <i class="fa fa-lock prefix grey-text"></i>
+          <input type="password" id="passconfirm" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="passconfirm">Confirm Your new password</label>
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button class="btn btn-default">Save?</button>
+      </div>
+    </div>
+  </div>
+</div>

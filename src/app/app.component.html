@@ -1,0 +1,12 @@
+<div class="se-pre-con">
+</div>
+<!--Kindly toggle between the dashboard component and login component depending on the login status of the user!-->
+<div class="wrapper" [hidden]="!authService.isLoggedIn()">
+    <app-navbar></app-navbar>
+    <div id="content">
+        <app-header></app-header>
+        <router-outlet></router-outlet>
+        <app-footer></app-footer>
+    </div>
+</div>
+<app-login [hidden]="authService.isLoggedIn()"></app-login>

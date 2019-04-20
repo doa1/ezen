@@ -1,0 +1,31 @@
+.fa.fa-close {
+    color: chocolate;
+}
+
+.fa.fa-check-circle {
+    color: chartreuse;
+    padding: 20px;
+}
+
+#main_tables th {
+    border: 1px solid rgb(207, 202, 202);
+}
+
+#main_tables td {
+    border: 1px solid rgb(207, 202, 202);
+}
+
+thead {
+    background-color: lightgray;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
