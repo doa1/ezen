@@ -4,4 +4,4 @@
 #*.js linguist-language=Angular
 #*.json linguist-language=Angular
 *.* linguist-language=Angular
-*.* linguist-language=AngularJs
+*.* linguist-language=JavaScript
