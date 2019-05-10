@@ -3,4 +3,4 @@
 #*.ts linguist-language=Angular
 #*.js linguist-language=Angular
 #*.json linguist-language=Angular
-*.* linguist-language=Java
+*.* linguist-language=Angular
